@@ -30,7 +30,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountInfoDto**](AccountInfoDTO.md)
+[**AccountInfoDto**](AccountInfoDto.md)
 
 ### Authorization
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MultisigAccountInfoDto**](MultisigAccountInfoDTO.md)
+[**MultisigAccountInfoDto**](MultisigAccountInfoDto.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]MultisigAccountGraphInfoDto**](MultisigAccountGraphInfoDTO.md)
+[**[]MultisigAccountGraphInfoDto**](MultisigAccountGraphInfoDto.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]AccountInfoDto**](AccountInfoDTO.md)
+[**[]AccountInfoDto**](AccountInfoDto.md)
 
 ### Authorization
 

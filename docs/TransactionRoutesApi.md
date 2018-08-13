@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionStatusDto**](TransactionStatusDTO.md)
+[**TransactionStatusDto**](TransactionStatusDto.md)
 
 ### Authorization
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]TransactionStatusDto**](TransactionStatusDTO.md)
+[**[]TransactionStatusDto**](TransactionStatusDto.md)
 
 ### Authorization
 

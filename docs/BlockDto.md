@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Signer** | **string** |  | [default to null]
 **Version** | **float32** |  | [default to null]
 **Type_** | **float32** |  | [default to null]
-**Height** | [***UInt64Dto**](UInt64DTO.md) |  | [default to null]
-**Timestamp** | [***UInt64Dto**](UInt64DTO.md) |  | [default to null]
-**Difficulty** | [***UInt64Dto**](UInt64DTO.md) |  | [default to null]
+**Height** | [***UInt64Dto**](UInt64Dto.md) |  | [default to null]
+**Timestamp** | [***UInt64Dto**](UInt64Dto.md) |  | [default to null]
+**Difficulty** | [***UInt64Dto**](UInt64Dto.md) |  | [default to null]
 **PreviousBlockHash** | **string** |  | [default to null]
 **BlockTransactionsHash** | **string** |  | [default to null]
 

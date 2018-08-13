@@ -25,7 +25,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MosaicInfoDto**](MosaicInfoDTO.md)
+[**MosaicInfoDto**](MosaicInfoDto.md)
 
 ### Authorization
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]MosaicInfoDto**](MosaicInfoDTO.md)
+[**[]MosaicInfoDto**](MosaicInfoDto.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]MosaicInfoDto**](MosaicInfoDTO.md)
+[**[]MosaicInfoDto**](MosaicInfoDto.md)
 
 ### Authorization
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]MosaicNameDto**](MosaicNameDTO.md)
+[**[]MosaicNameDto**](MosaicNameDto.md)
 
 ### Authorization
 

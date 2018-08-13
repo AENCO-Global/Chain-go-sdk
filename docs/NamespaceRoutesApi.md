@@ -25,7 +25,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NamespaceInfoDto**](NamespaceInfoDTO.md)
+[**NamespaceInfoDto**](NamespaceInfoDto.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]NamespaceInfoDto**](NamespaceInfoDTO.md)
+[**[]NamespaceInfoDto**](NamespaceInfoDto.md)
 
 ### Authorization
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]NamespaceInfoDto**](NamespaceInfoDTO.md)
+[**[]NamespaceInfoDto**](NamespaceInfoDto.md)
 
 ### Authorization
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]NamespaceNameDto**](NamespaceNameDTO.md)
+[**[]NamespaceNameDto**](NamespaceNameDto.md)
 
 ### Authorization
 

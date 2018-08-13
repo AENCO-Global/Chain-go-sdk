@@ -27,7 +27,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BlockInfoDto**](BlockInfoDTO.md)
+[**BlockInfoDto**](BlockInfoDto.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**HeightDto**](HeightDTO.md)
+[**HeightDto**](HeightDto.md)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BlockchainScoreDto**](BlockchainScoreDTO.md)
+[**BlockchainScoreDto**](BlockchainScoreDto.md)
 
 ### Authorization
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]BlockInfoDto**](BlockInfoDTO.md)
+[**[]BlockInfoDto**](BlockInfoDto.md)
 
 ### Authorization
 
@@ -166,7 +166,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BlockchainStorageInfoDto**](BlockchainStorageInfoDTO.md)
+[**BlockchainStorageInfoDto**](BlockchainStorageInfoDto.md)
 
 ### Authorization
 

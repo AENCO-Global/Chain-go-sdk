@@ -18,7 +18,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**NetworkTypeDto**](NetworkTypeDTO.md)
+[**NetworkTypeDto**](NetworkTypeDto.md)
 
 ### Authorization
 
