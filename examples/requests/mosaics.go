@@ -6,8 +6,8 @@ import (
 	"github.com/slackve/nem2-sdk-go/sdk/utils"
 )
 
-const mosaic  = "d525ad41d95fcf29"
-const mosaic2  = "d525ad41d95fcf28"
+const mosaic = "d525ad41d95fcf29"
+const mosaic2 = "d525ad41d95fcf28"
 
 func main() {
 
