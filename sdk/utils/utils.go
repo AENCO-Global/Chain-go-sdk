@@ -1,16 +1,18 @@
 package utils
 
 import (
-	"reflect"
-	"strconv"
 	"encoding/json"
 	"fmt"
+	"reflect"
+	"strconv"
 )
 
 type Error struct {
-	Code int
-	Message   string
-	Status    int
+	Status int `json:"Status"`
+	Body   struct {
+		Code    string `json:"code"`
+		Message string `json:"message"`
+	} `json:"Body"`
 }
 
 func Number(n interface{}) (num float64) {
@@ -88,17 +90,16 @@ func IsEmpty(v interface{}) bool {
 func Struc2Json(data interface{}) string {
 	var rawerr Error
 	json.Unmarshal([]byte(fmt.Sprint(data)), &rawerr)
-	if rawerr.Status == 0 {
-		r, err := json.MarshalIndent(data, "", "  ")
+	if rawerr.Status != 0 {
+		r, err := json.MarshalIndent(rawerr, "", "  ")
 		if err != nil {
 			fmt.Println("Error:", err)
 		}
 		return string(r) + "\n_________________\n"
 	}
-	r, err := json.MarshalIndent(rawerr, "", "  ")
+	r, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
 	return string(r) + "\n_________________\n"
 }
-

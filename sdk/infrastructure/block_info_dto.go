@@ -11,7 +11,7 @@ package infrastructure
 
 type BlockInfoDto struct {
 
-	Meta *BlockMetaDto `json:"meta"`
+	Meta *BlockMetaDto `json:"meta,omitempty"`
 
-	Block *BlockDto `json:"block"`
+	Block *BlockDto `json:"block,omitempty"`
 }

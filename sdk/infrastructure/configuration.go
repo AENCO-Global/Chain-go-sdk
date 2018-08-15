@@ -58,9 +58,13 @@ type Configuration struct {
 	HTTPClient 	  *http.Client
 }
 
-func NewConfiguration() *Configuration {
+func NewConfiguration(url string) *Configuration {
+	if len(url) == 0{
+		url = "http://localhost:3000"
+	}
+
 	cfg := &Configuration{
-		BasePath:      "http://localhost:3000",
+		BasePath:      url,
 		DefaultHeader: make(map[string]string),
 		UserAgent:     "nem2-sdk-go",
 	}

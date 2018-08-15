@@ -11,21 +11,21 @@ package infrastructure
 
 type BlockDto struct {
 
-	Signature string `json:"signature"`
+	Signature string `json:"signature,omitempty"`
 
-	Signer string `json:"signer"`
+	Signer string `json:"signer,omitempty"`
 
-	Version float32 `json:"version"`
+	Version float32 `json:"version,omitempty"`
 
 	Type_ float32 `json:"type"`
 
-	Height *UInt64Dto `json:"height"`
+	Height *[]UInt64Dto `json:"height,omitempty"`
 
-	Timestamp *UInt64Dto `json:"timestamp"`
+	Timestamp *[]UInt64Dto `json:"timestamp,omitempty"`
 
-	Difficulty *UInt64Dto `json:"difficulty"`
+	Difficulty *[]UInt64Dto `json:"difficulty,omitempty"`
 
-	PreviousBlockHash string `json:"previousBlockHash"`
+	PreviousBlockHash string `json:"previousBlockHash,omitempty"`
 
-	BlockTransactionsHash string `json:"blockTransactionsHash"`
+	BlockTransactionsHash string `json:"blockTransactionsHash,omitempty"`
 }

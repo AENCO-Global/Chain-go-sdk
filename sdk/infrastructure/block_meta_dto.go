@@ -11,11 +11,13 @@ package infrastructure
 
 type BlockMetaDto struct {
 
-	Hash string `json:"hash"`
+	Hash string `json:"hash,omitempty"`
 
-	GenerationHash string `json:"generationHash"`
+	GenerationHash string `json:"generationHash,omitempty"`
 
-	TotalFee *UInt64Dto `json:"totalFee"`
+	TotalFee *[]UInt64Dto `json:"totalFee,omitempty"`
 
-	NumTransactions float32 `json:"numTransactions"`
+	MerkleTree []string `json:"-"`
+
+	NumTransactions float32 `json:"numTransactions,omitempty"`
 }

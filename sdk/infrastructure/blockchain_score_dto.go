@@ -11,7 +11,7 @@ package infrastructure
 
 type BlockchainScoreDto struct {
 
-	ScoreHigh *UInt64Dto `json:"scoreHigh"`
+	ScoreHigh *[]UInt64Dto `json:"scoreHigh"`
 
-	ScoreLow *UInt64Dto `json:"scoreLow"`
+	ScoreLow *[]UInt64Dto `json:"scoreLow"`
 }

@@ -12,11 +12,11 @@ package infrastructure
 import (
 	"io/ioutil"
 	"net/url"
-	"net/http"
 	"strings"
 	"golang.org/x/net/context"
 	"encoding/json"
 	"fmt"
+	"github.com/slackve/nem2-sdk-go/sdk/utils"
 )
 
 // Linger please
@@ -29,11 +29,11 @@ type AccountRoutesApiService service
 
 // AccountRoutesApiService Get account information
 // Returns AccountInfo for an account.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param accountId Account address or publicKey.
 // return AccountInfoDto
-func (a *AccountRoutesApiService) GetAccountInfo(ctx context.Context, accountId string) (AccountInfoDto,  *http.Response, error) {
+func (a *AccountRoutesApiService) GetAccountInfo(accountId string) (AccountInfoDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
@@ -71,25 +71,24 @@ func (a *AccountRoutesApiService) GetAccountInfo(ctx context.Context, accountId 
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // AccountRoutesApiService Get multisig account information
@@ -97,8 +96,9 @@ func (a *AccountRoutesApiService) GetAccountInfo(ctx context.Context, accountId 
 // param accountId Account address or public key.
 // Returns MultisigAccountInfo for an account.
 // return MultisigAccountInfoDto
-func (a *AccountRoutesApiService) GetAccountMultisig(ctx context.Context, accountId string) (MultisigAccountInfoDto,  *http.Response, error) {
+func (a *AccountRoutesApiService) GetAccountMultisig(accountId string) (MultisigAccountInfoDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
@@ -136,34 +136,33 @@ func (a *AccountRoutesApiService) GetAccountMultisig(ctx context.Context, accoun
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // AccountRoutesApiService Get multisig account graph information
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param accountId Account address or public key.
 // Returns MultisigAccountGraphInfo for an account.
 // return []MultisigAccountGraphInfoDto
-func (a *AccountRoutesApiService) GetAccountMultisigGraph(ctx context.Context, accountId string) ([]MultisigAccountGraphInfoDto,  *http.Response, error) {
+func (a *AccountRoutesApiService) GetAccountMultisigGraph(accountId string) ([]MultisigAccountGraphInfoDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
@@ -201,34 +200,34 @@ func (a *AccountRoutesApiService) GetAccountMultisigGraph(ctx context.Context, a
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // AccountRoutesApiService Get accounts information
-// param ctx context.Context for authentication, logging, tracing, etc.
-// param addresses Array of addresses.
+// param addresses Slice of addresses.
 // Returns AccountsInfo for different accounts.
 // return []AccountInfoDto
-func (a *AccountRoutesApiService) GetAccountsInfo(ctx context.Context, addresses Addresses) ([]AccountInfoDto,  *http.Response, error) {
+func (a *AccountRoutesApiService) GetAccountsInfo(addresses Addresses) ([]AccountInfoDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody interface{}
 		localVarFileName string
@@ -267,43 +266,41 @@ func (a *AccountRoutesApiService) GetAccountsInfo(ctx context.Context, addresses
 	localVarPostBody = &addresses
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // AccountRoutesApiService Get incoming transactions information
 // Gets an array of transactions for which an account is the recipient.
 // A transaction is said to be incoming regarding an account if the account is the recipient of a transaction.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param publicKey Account publicKey.
-// param optional (nil or map[string]interface{}) with one or more of:
 // param "pageSize" (int32) The number of transactions to return. Should be between 10 and 100, otherwise 10.
 // param "id" (string) Identifier of the transaction after which we want the transactions to be returned.
-// return []interface{}
-func (a *AccountRoutesApiService) IncomingTransactions(ctx context.Context, publicKey string, localVarOptionals map[string]interface{}) ([]interface{},  *http.Response, error) {
+// return []TransactionInfoDto
+func (a *AccountRoutesApiService) IncomingTransactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
+		ctx context.Context
+	localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []interface{}
+	 	successPayload  []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -314,19 +311,14 @@ func (a *AccountRoutesApiService) IncomingTransactions(ctx context.Context, publ
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if err := typeCheckParameter(localVarOptionals["pageSize"], "int32", "pageSize"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["id"], "string", "id"); err != nil {
-		return successPayload, nil, err
+	if !utils.IsEmpty(pageSize) {
+		localVarQueryParams.Add("pageSize", parameterToString(pageSize, ""))
 	}
 
-	if localVarTempParam, localVarOk := localVarOptionals["pageSize"].(int32); localVarOk {
-		localVarQueryParams.Add("pageSize", parameterToString(localVarTempParam, ""))
+	if !utils.IsEmpty(id) {
+		localVarQueryParams.Add("id", parameterToString(id, ""))
 	}
-	if localVarTempParam, localVarOk := localVarOptionals["id"].(string); localVarOk {
-		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
-	}
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{  }
 
@@ -348,42 +340,41 @@ func (a *AccountRoutesApiService) IncomingTransactions(ctx context.Context, publ
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // AccountRoutesApiService Get outgoing transactions information
 // Gets an array of transactions for which an account is the sender.
 // A transaction is said to be outgoing egarding an account if the account is the sender of a transaction.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param publicKey Account publicKey.
-// param optional (nil or map[string]interface{}) with one or more of:
 // param "pageSize" (int32) The number of transactions to return. Should be between 10 and 100, otherwise 10.
 // param "id" (string) Identifier of the transaction after which we want the transactions to be returned.
-// return []interface{}
-func (a *AccountRoutesApiService) OutgoingTransactions(ctx context.Context, publicKey string, localVarOptionals map[string]interface{}) ([]interface{},  *http.Response, error) {
+// return []TransactionInfoDto
+func (a *AccountRoutesApiService) OutgoingTransactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []interface{}
+	 	successPayload  []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -394,19 +385,14 @@ func (a *AccountRoutesApiService) OutgoingTransactions(ctx context.Context, publ
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if err := typeCheckParameter(localVarOptionals["pageSize"], "int32", "pageSize"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["id"], "string", "id"); err != nil {
-		return successPayload, nil, err
+	if !utils.IsEmpty(pageSize) {
+		localVarQueryParams.Add("pageSize", parameterToString(pageSize, ""))
 	}
 
-	if localVarTempParam, localVarOk := localVarOptionals["pageSize"].(int32); localVarOk {
-		localVarQueryParams.Add("pageSize", parameterToString(localVarTempParam, ""))
+	if !utils.IsEmpty(id) {
+		localVarQueryParams.Add("id", parameterToString(id, ""))
 	}
-	if localVarTempParam, localVarOk := localVarOptionals["id"].(string); localVarOk {
-		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
-	}
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{  }
 
@@ -428,44 +414,43 @@ func (a *AccountRoutesApiService) OutgoingTransactions(ctx context.Context, publ
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // AccountRoutesApiService Get aggregate bonded transactions information
 // Gets an array of aggregate bonded transactions for which an account is the sender or
 // has signed the transaction. A transaction is said to be aggregate bonded regarding an
 // account if announced but there are missing signatures.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param publicKey Account publicKey.
-// param optional (nil or map[string]interface{}) with one or more of:
 // param "pageSize" (int32) The number of transactions to return. Should be between 10 and 100, otherwise 10.
 // aram "id" (string) Identifier of the transaction after which we want the transactions to be returned.
-// return []interface{}
-func (a *AccountRoutesApiService) PartialTransactions(ctx context.Context, publicKey string, localVarOptionals map[string]interface{}) ([]interface{},  *http.Response, error) {
+// return []TransactionInfoDto
+func (a *AccountRoutesApiService) PartialTransactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto,
+error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []interface{}
+	 	successPayload  []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -476,19 +461,14 @@ func (a *AccountRoutesApiService) PartialTransactions(ctx context.Context, publi
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if err := typeCheckParameter(localVarOptionals["pageSize"], "int32", "pageSize"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["id"], "string", "id"); err != nil {
-		return successPayload, nil, err
+	if !utils.IsEmpty(pageSize) {
+		localVarQueryParams.Add("pageSize", parameterToString(pageSize, ""))
 	}
 
-	if localVarTempParam, localVarOk := localVarOptionals["pageSize"].(int32); localVarOk {
-		localVarQueryParams.Add("pageSize", parameterToString(localVarTempParam, ""))
+	if !utils.IsEmpty(id) {
+		localVarQueryParams.Add("id", parameterToString(id, ""))
 	}
-	if localVarTempParam, localVarOk := localVarOptionals["id"].(string); localVarOk {
-		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
-	}
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{  }
 
@@ -510,42 +490,41 @@ func (a *AccountRoutesApiService) PartialTransactions(ctx context.Context, publi
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // AccountRoutesApiService Get confirmed transactions information
 // Gets an array of confirmed transaction for which an account is signer or recipient.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param publicKey Account publicKey.
-// param optional (nil or map[string]interface{}) with one or more of:
 // param "pageSize" (int32) The number of transactions to return. Should be between 10 and 100, otherwise 10.
 // param "id" (string) Identifier of the transaction after which we want the transactions to be returned.
-// return []interface{}
-func (a *AccountRoutesApiService) Transactions(ctx context.Context, publicKey string, localVarOptionals map[string]interface{}) ([]interface{},  *http.Response, error) {
+// return []TransactionInfoDto
+func (a *AccountRoutesApiService) Transactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []interface{}
+	 	successPayload  []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -556,19 +535,14 @@ func (a *AccountRoutesApiService) Transactions(ctx context.Context, publicKey st
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if err := typeCheckParameter(localVarOptionals["pageSize"], "int32", "pageSize"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["id"], "string", "id"); err != nil {
-		return successPayload, nil, err
+	if !utils.IsEmpty(pageSize) {
+		localVarQueryParams.Add("pageSize", parameterToString(pageSize, ""))
 	}
 
-	if localVarTempParam, localVarOk := localVarOptionals["pageSize"].(int32); localVarOk {
-		localVarQueryParams.Add("pageSize", parameterToString(localVarTempParam, ""))
+	if !utils.IsEmpty(id) {
+		localVarQueryParams.Add("id", parameterToString(id, ""))
 	}
-	if localVarTempParam, localVarOk := localVarOptionals["id"].(string); localVarOk {
-		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
-	}
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{  }
 
@@ -590,43 +564,41 @@ func (a *AccountRoutesApiService) Transactions(ctx context.Context, publicKey st
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // AccountRoutesApiService Get unconfirmed transactions information
 // Gets the array of transactions for which an account is the sender or
 // receiver and which have not yet been included in a block.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param publicKey Account publicKey.
-// param optional (nil or map[string]interface{}) with one or more of:
 // param "pageSize" (int32) The number of transactions to return. Should be between 10 and 100, otherwise 10.
 // param "id" (string) Identifier of the transaction after which we want the transactions to be returned.
-// @return []interface{}
-func (a *AccountRoutesApiService) UnconfirmedTransactions(ctx context.Context, publicKey string, localVarOptionals map[string]interface{}) ([]interface{},  *http.Response, error) {
+// return []TransactionInfoDto
+func (a *AccountRoutesApiService) UnconfirmedTransactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
+		ctx context.Context
+	localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []interface{}
+	 	successPayload  []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -637,19 +609,14 @@ func (a *AccountRoutesApiService) UnconfirmedTransactions(ctx context.Context, p
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if err := typeCheckParameter(localVarOptionals["pageSize"], "int32", "pageSize"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["id"], "string", "id"); err != nil {
-		return successPayload, nil, err
+	if !utils.IsEmpty(pageSize) {
+		localVarQueryParams.Add("pageSize", parameterToString(pageSize, ""))
 	}
 
-	if localVarTempParam, localVarOk := localVarOptionals["pageSize"].(int32); localVarOk {
-		localVarQueryParams.Add("pageSize", parameterToString(localVarTempParam, ""))
+	if !utils.IsEmpty(id) {
+		localVarQueryParams.Add("id", parameterToString(id, ""))
 	}
-	if localVarTempParam, localVarOk := localVarOptionals["id"].(string); localVarOk {
-		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
-	}
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{  }
 
@@ -671,24 +638,23 @@ func (a *AccountRoutesApiService) UnconfirmedTransactions(ctx context.Context, p
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 

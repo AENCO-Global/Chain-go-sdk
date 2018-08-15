@@ -9,5 +9,4 @@
 
 package infrastructure
 
-type UInt64Dto struct {
-}
+type UInt64Dto uint64
