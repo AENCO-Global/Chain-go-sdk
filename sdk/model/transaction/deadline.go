@@ -7,7 +7,7 @@ import "time"
 // If a transaction does not get included in a block before the deadline is reached, it is deleted.
 
 type Deadline struct {
-	Value int64
+	Value uint64
 }
 // Create deadline model
 // param deadline
