@@ -11,7 +11,7 @@ type MosaicDefinitionDto struct {
 
 	Owner string `json:"owner"`
 
-	Properties *MosaicPropertiesDto `json:"properties"`
+	Properties *[]MosaicPropertiesDto `json:"properties"`
 
 	Levy *interface{} `json:"levy"`
 }

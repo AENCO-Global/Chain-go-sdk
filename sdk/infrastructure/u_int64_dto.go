@@ -1,3 +1,3 @@
 package infrastructure
 
-type UInt64Dto uint64
+type UInt64Dto []uint64

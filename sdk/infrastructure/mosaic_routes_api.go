@@ -3,9 +3,9 @@ package infrastructure
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/slackve/nem2-sdk-go/sdk/utils"
 	"golang.org/x/net/context"
 	"io/ioutil"
-	"net/http"
 	"net/url"
 	"strings"
 )
@@ -17,13 +17,13 @@ var (
 
 type MosaicRoutesApiService service
 
-/* MosaicRoutesApiService Get mosaic information
-Returns MosaicInfo for a given mosaicId.
-* @param ctx context.Context for authentication, logging, tracing, etc.
-@param mosaicId Mosaic identifier.
-@return MosaicInfoDto*/
-func (a *MosaicRoutesApiService) GetMosaic(ctx context.Context, mosaicId string) (MosaicInfoDto, *http.Response, error) {
+// MosaicRoutesApiService Get mosaic information
+// Returns MosaicInfo for a given mosaicId.
+// param mosaicId Mosaic identifier.
+// return MosaicInfoDto
+func (a *MosaicRoutesApiService) GetMosaic(mosaicId string) (MosaicInfoDto, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -60,33 +60,33 @@ func (a *MosaicRoutesApiService) GetMosaic(ctx context.Context, mosaicId string)
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
-/* MosaicRoutesApiService Get information for a set of mosaics
-Returns MosaicInfo for a given set of mosaicIds.
-* @param ctx context.Context for authentication, logging, tracing, etc.
-@param mosaicIds Array of mosaicIds.
-@return []MosaicInfoDto*/
-func (a *MosaicRoutesApiService) GetMosaics(ctx context.Context, mosaicIds MosaicIds) ([]MosaicInfoDto, *http.Response, error) {
+// MosaicRoutesApiService Get information for a set of mosaics
+// Returns MosaicInfo for a given set of mosaicIds.
+// param mosaicIds Array of mosaicIds.
+// return []MosaicInfoDto
+func (a *MosaicRoutesApiService) GetMosaics(mosaicIds MosaicIds) ([]MosaicInfoDto, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -124,36 +124,35 @@ func (a *MosaicRoutesApiService) GetMosaics(ctx context.Context, mosaicIds Mosai
 	localVarPostBody = &mosaicIds
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
-/* MosaicRoutesApiService Get mosaics information.
-Returns an array of MosaicInfo from mosaics created under provided namespace.
-* @param ctx context.Context for authentication, logging, tracing, etc.
-@param namespaceId Namespace identifier.
-@param optional (nil or map[string]interface{}) with one or more of:
-    @param "pageSize" (int32) The number of mosaics to return.
-    @param "id" (string) Identifier of the mosaic after which we want the transactions to be returned.
-@return []MosaicInfoDto*/
-func (a *MosaicRoutesApiService) GetMosaicsFromNamespace(ctx context.Context, namespaceId string, localVarOptionals map[string]interface{}) ([]MosaicInfoDto, *http.Response, error) {
+// MosaicRoutesApiService Get mosaics information.
+// Returns an array of MosaicInfo from mosaics created under provided namespace.
+// param namespaceId Namespace identifier.
+// param "pageSize" (int32) The number of mosaics to return.
+// param "id" (string) Identifier of the mosaic after which we want the transactions to be returned.
+// return []MosaicInfoDto
+func (a *MosaicRoutesApiService) GetMosaicsFromNamespace(namespaceId string, pageSize int, id string) ([]MosaicInfoDto, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -169,19 +168,14 @@ func (a *MosaicRoutesApiService) GetMosaicsFromNamespace(ctx context.Context, na
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if err := typeCheckParameter(localVarOptionals["pageSize"], "int32", "pageSize"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["id"], "string", "id"); err != nil {
-		return successPayload, nil, err
+	if !utils.IsEmpty(pageSize) {
+		localVarQueryParams.Add("pageSize", parameterToString(pageSize, ""))
 	}
 
-	if localVarTempParam, localVarOk := localVarOptionals["pageSize"].(int32); localVarOk {
-		localVarQueryParams.Add("pageSize", parameterToString(localVarTempParam, ""))
+	if !utils.IsEmpty(id) {
+		localVarQueryParams.Add("id", parameterToString(id, ""))
 	}
-	if localVarTempParam, localVarOk := localVarOptionals["id"].(string); localVarOk {
-		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
-	}
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -203,33 +197,33 @@ func (a *MosaicRoutesApiService) GetMosaicsFromNamespace(ctx context.Context, na
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
-/* MosaicRoutesApiService Get readable names for a set of mosaics
-Returns names for mosaics.
-* @param ctx context.Context for authentication, logging, tracing, etc.
-@param mosaicIds Array of mosaicIds.
-@return []MosaicNameDto*/
-func (a *MosaicRoutesApiService) GetMosaicsName(ctx context.Context, mosaicIds MosaicIds) ([]MosaicNameDto, *http.Response, error) {
+// MosaicRoutesApiService Get readable names for a set of mosaics
+// Returns names for mosaics.
+// param mosaicIds Array of mosaicIds.
+// return []MosaicNameDto
+func (a *MosaicRoutesApiService) GetMosaicsName(mosaicIds MosaicIds) ([]MosaicNameDto, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -267,22 +261,22 @@ func (a *MosaicRoutesApiService) GetMosaicsName(ctx context.Context, mosaicIds M
 	localVarPostBody = &mosaicIds
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }

@@ -3,9 +3,9 @@ package infrastructure
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/slackve/nem2-sdk-go/sdk/utils"
 	"golang.org/x/net/context"
 	"io/ioutil"
-	"net/http"
 	"net/url"
 	"strings"
 )
@@ -18,12 +18,12 @@ var (
 type NamespaceRoutesApiService service
 
 // NamespaceRoutesApiService Get namespace information
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param namespaceId Namespace identifier.
 // Returns NamespaceInfo for a given namespaceId.
 // return NamespaceInfoDto
-func (a *NamespaceRoutesApiService) GetNamespace(ctx context.Context, namespaceId string) (NamespaceInfoDto, *http.Response, error) {
+func (a *NamespaceRoutesApiService) GetNamespace(namespaceId string) (NamespaceInfoDto, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -60,36 +60,37 @@ func (a *NamespaceRoutesApiService) GetNamespace(ctx context.Context, namespaceI
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // NamespaceRoutesApiService Get namespaces an account owns
 // Returns an array of NamespaceInfo for an account.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param accountId Account address or public key.
-// param optional (nil or map[string]interface{}) with one or more of:
 // param "pageSize" (int32) The number of namespaces to return.
 // param "id" (string) Identifier of the namespace after which we want the transactions to be returned.
 // return []NamespaceInfoDto
-func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(ctx context.Context, accountId string, localVarOptionals map[string]interface{}) ([]NamespaceInfoDto, *http.Response, error) {
+func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(accountId string, pageSize int,
+	id string) ([]NamespaceInfoDto,
+	error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -105,19 +106,14 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(ctx context.Context
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if err := typeCheckParameter(localVarOptionals["pageSize"], "int32", "pageSize"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["id"], "string", "id"); err != nil {
-		return successPayload, nil, err
+	if !utils.IsEmpty(pageSize) {
+		localVarQueryParams.Add("pageSize", parameterToString(pageSize, ""))
 	}
 
-	if localVarTempParam, localVarOk := localVarOptionals["pageSize"].(int32); localVarOk {
-		localVarQueryParams.Add("pageSize", parameterToString(localVarTempParam, ""))
+	if !utils.IsEmpty(id) {
+		localVarQueryParams.Add("id", parameterToString(id, ""))
 	}
-	if localVarTempParam, localVarOk := localVarOptionals["id"].(string); localVarOk {
-		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
-	}
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -139,36 +135,36 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(ctx context.Context
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // NamespaceRoutesApiService Get namespaces information
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param addresses Accounts address array.
-// param optional (nil or map[string]interface{}) with one or more of:
 // param "pageSize" (int32) The number of namespaces to return.
 // param "id" (string) Identifier of the namespace after which we want the transactions to be returned.
 // Returns an array of NamespaceInfo for a given set of addresses.
 // return []NamespaceInfoDto
-func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(ctx context.Context, addresses Addresses, localVarOptionals map[string]interface{}) ([]NamespaceInfoDto, *http.Response, error) {
+func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(addresses Addresses, pageSize int,
+	id string) ([]NamespaceInfoDto, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -183,19 +179,14 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(ctx context.Contex
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if err := typeCheckParameter(localVarOptionals["pageSize"], "int32", "pageSize"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["id"], "string", "id"); err != nil {
-		return successPayload, nil, err
+	if !utils.IsEmpty(pageSize) {
+		localVarQueryParams.Add("pageSize", parameterToString(pageSize, ""))
 	}
 
-	if localVarTempParam, localVarOk := localVarOptionals["pageSize"].(int32); localVarOk {
-		localVarQueryParams.Add("pageSize", parameterToString(localVarTempParam, ""))
+	if !utils.IsEmpty(id) {
+		localVarQueryParams.Add("id", parameterToString(id, ""))
 	}
-	if localVarTempParam, localVarOk := localVarOptionals["id"].(string); localVarOk {
-		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
-	}
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -219,33 +210,33 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(ctx context.Contex
 	localVarPostBody = &addresses
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // NamespaceRoutesApiService Get readable names for a set of namespaces
 // Returns names for namespaces.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param namespaceIds Array of namespaceIds.
 // return []NamespaceNameDto
-func (a *NamespaceRoutesApiService) GetNamespacesNames(ctx context.Context, namespaceIds NamespaceIds) ([]NamespaceNameDto, *http.Response, error) {
+func (a *NamespaceRoutesApiService) GetNamespacesNames(namespaceIds NamespaceIds) ([]NamespaceNameDto, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -283,22 +274,22 @@ func (a *NamespaceRoutesApiService) GetNamespacesNames(ctx context.Context, name
 	localVarPostBody = &namespaceIds
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }

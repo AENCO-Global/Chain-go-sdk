@@ -1,4 +1,3 @@
 package infrastructure
 
-type MosaicPropertiesDto struct {
-}
+type MosaicPropertiesDto []int

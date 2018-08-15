@@ -6,11 +6,11 @@ import (
 	"github.com/slackve/nem2-sdk-go/sdk/utils"
 )
 
-const Server = "http://catapult.isarq.com:3000"
-
 func main() {
 
 	// Blockchain routes.
+	const Server = "http://catapult.isarq.com:3000"
+
 	client := infrastructure.NewAPIClient()
 	client.ChangeServer(Server)
 
