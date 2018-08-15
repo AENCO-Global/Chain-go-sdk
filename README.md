@@ -17,6 +17,13 @@ Nem2-sdk for for Golang and Scala to work with the NEM2 (a.k.a Catapult) based o
  - Get aggregate bonded transactions information.
  - Get multisig account information.
  - Get multisig account graph information.
+ ### Transaction gets
+ - Get transaction information of transactionId or hash.
+ - Get transaction information for a given set of transactionId or hash.
+ - Get transaction status of transactionId or hash..
+ - Get an array of transaction statuses for a given set of transactionId or hash.
+ 
+ 
  ### Mosaic gets
  - Get mosaic information.
  - Get information for a set of mosaics.

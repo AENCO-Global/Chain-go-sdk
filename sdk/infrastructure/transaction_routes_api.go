@@ -214,13 +214,14 @@ func (a *TransactionRoutesApiService) AnnounceTransaction(ctx context.Context, p
 // param ctx context.Context for authentication, logging, tracing, etc.
 // param transactionId TransactionId or hash.
 // return interface{}
-func (a *TransactionRoutesApiService) GetTransaction(ctx context.Context, transactionId string) (interface{}, *http.Response, error) {
+func (a *TransactionRoutesApiService) GetTransaction(transactionId string) (TransactionInfoDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		successPayload     interface{}
+		successPayload     TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -252,24 +253,24 @@ func (a *TransactionRoutesApiService) GetTransaction(ctx context.Context, transa
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // TransactionRoutesApiService Get transaction status
@@ -277,8 +278,9 @@ func (a *TransactionRoutesApiService) GetTransaction(ctx context.Context, transa
 // param ctx context.Context for authentication, logging, tracing, etc.
 // param hash Transaction hash.
 // return TransactionStatusDto
-func (a *TransactionRoutesApiService) GetTransactionStatus(ctx context.Context, hash string) (TransactionStatusDto, *http.Response, error) {
+func (a *TransactionRoutesApiService) GetTransactionStatus(hash string) (TransactionStatusDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -315,24 +317,24 @@ func (a *TransactionRoutesApiService) GetTransactionStatus(ctx context.Context, 
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // TransactionRoutesApiService Get transactions information
@@ -340,13 +342,14 @@ func (a *TransactionRoutesApiService) GetTransactionStatus(ctx context.Context, 
 // param transactionIds Array of transactionIds or hashes.
 // Returns transaction information for a given set of transactionId or hash.
 // return []interface{}
-func (a *TransactionRoutesApiService) GetTransactions(ctx context.Context, transactionIds TransactionIds) ([]interface{}, *http.Response, error) {
+func (a *TransactionRoutesApiService) GetTransactions(transactionIds TransactionIds) ([]TransactionInfoDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		successPayload     []interface{}
+		successPayload     []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -379,24 +382,24 @@ func (a *TransactionRoutesApiService) GetTransactions(ctx context.Context, trans
 	localVarPostBody = &transactionIds
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
 
 // TransactionRoutesApiService Get transactions status.
@@ -404,8 +407,9 @@ func (a *TransactionRoutesApiService) GetTransactions(ctx context.Context, trans
 // param transactionHashes Array of transactionIds or hashes.
 // Returns an array of transaction statuses for a given set of transactionId or hash.
 // return []TransactionStatusDto*/
-func (a *TransactionRoutesApiService) GetTransactionsStatuses(ctx context.Context, transactionHashes TransactionHashes) ([]TransactionStatusDto, *http.Response, error) {
+func (a *TransactionRoutesApiService) GetTransactionsStatuses(transactionHashes TransactionHashes) ([]TransactionStatusDto, error) {
 	var (
+		ctx context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -443,22 +447,22 @@ func (a *TransactionRoutesApiService) GetTransactionsStatuses(ctx context.Contex
 	localVarPostBody = &transactionHashes
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }
