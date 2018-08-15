@@ -67,5 +67,5 @@ func main() {
 		fmt.Println(utils.Struc2Json(err))
 		return
 	}
-	fmt.Printf("GetMosaicsName:\n%s", utils.Struc2Json(d))
+	fmt.Printf("GetNamespacesNames:\n%s", utils.Struc2Json(d))
 }
