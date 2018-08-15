@@ -36,6 +36,11 @@ Nem2-sdk for for Golang and Scala to work with the NEM2 (a.k.a Catapult) based o
  - Get the current score of the chain.
  - Get an array of BlockInfo for a given block height and limit.
  
+ # features in development!
+   - Announces a transaction to the network.
+   - Announces an aggregate bonded transaction to the network.
+   - Announces a cosignature transaction to the network.
+ 
 ### Installation
 
 ```sh
