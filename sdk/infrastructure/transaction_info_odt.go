@@ -2,7 +2,7 @@ package infrastructure
 
 type TransactionInfoDto struct {
 
-	Meta *TransactionMetaDto `json:"meta"`
+	Meta *TransactionMetaDto `json:"meta,omitempty"`
 
-	Transaction *TransactionDto `json:"transaction"`
+	Transaction *TransactionDto `json:"transaction,omitempty"`
 }
