@@ -1,13 +1,13 @@
 package infrastructure
 
 import (
-	"io/ioutil"
-	"net/url"
-	"net/http"
-	"strings"
-	"golang.org/x/net/context"
 	"encoding/json"
 	"fmt"
+	"golang.org/x/net/context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -17,19 +17,18 @@ var (
 
 type MosaicRoutesApiService service
 
-
 /* MosaicRoutesApiService Get mosaic information
- Returns MosaicInfo for a given mosaicId.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param mosaicId Mosaic identifier.
- @return MosaicInfoDto*/
-func (a *MosaicRoutesApiService) GetMosaic(ctx context.Context, mosaicId string) (MosaicInfoDto,  *http.Response, error) {
+Returns MosaicInfo for a given mosaicId.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@param mosaicId Mosaic identifier.
+@return MosaicInfoDto*/
+func (a *MosaicRoutesApiService) GetMosaic(ctx context.Context, mosaicId string) (MosaicInfoDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  MosaicInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     MosaicInfoDto
 	)
 
 	// create path and map variables
@@ -40,9 +39,8 @@ func (a *MosaicRoutesApiService) GetMosaic(ctx context.Context, mosaicId string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -53,7 +51,7 @@ func (a *MosaicRoutesApiService) GetMosaic(ctx context.Context, mosaicId string)
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -79,22 +77,21 @@ func (a *MosaicRoutesApiService) GetMosaic(ctx context.Context, mosaicId string)
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
 /* MosaicRoutesApiService Get information for a set of mosaics
- Returns MosaicInfo for a given set of mosaicIds.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param mosaicIds Array of mosaicIds.
- @return []MosaicInfoDto*/
-func (a *MosaicRoutesApiService) GetMosaics(ctx context.Context, mosaicIds MosaicIds) ([]MosaicInfoDto,  *http.Response, error) {
+Returns MosaicInfo for a given set of mosaicIds.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@param mosaicIds Array of mosaicIds.
+@return []MosaicInfoDto*/
+func (a *MosaicRoutesApiService) GetMosaics(ctx context.Context, mosaicIds MosaicIds) ([]MosaicInfoDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []MosaicInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []MosaicInfoDto
 	)
 
 	// create path and map variables
@@ -104,9 +101,8 @@ func (a *MosaicRoutesApiService) GetMosaics(ctx context.Context, mosaicIds Mosai
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -117,7 +113,7 @@ func (a *MosaicRoutesApiService) GetMosaics(ctx context.Context, mosaicIds Mosai
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -145,25 +141,24 @@ func (a *MosaicRoutesApiService) GetMosaics(ctx context.Context, mosaicIds Mosai
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
 /* MosaicRoutesApiService Get mosaics information.
- Returns an array of MosaicInfo from mosaics created under provided namespace.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param namespaceId Namespace identifier.
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "pageSize" (int32) The number of mosaics to return.
-     @param "id" (string) Identifier of the mosaic after which we want the transactions to be returned.
- @return []MosaicInfoDto*/
-func (a *MosaicRoutesApiService) GetMosaicsFromNamespace(ctx context.Context, namespaceId string, localVarOptionals map[string]interface{}) ([]MosaicInfoDto,  *http.Response, error) {
+Returns an array of MosaicInfo from mosaics created under provided namespace.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@param namespaceId Namespace identifier.
+@param optional (nil or map[string]interface{}) with one or more of:
+    @param "pageSize" (int32) The number of mosaics to return.
+    @param "id" (string) Identifier of the mosaic after which we want the transactions to be returned.
+@return []MosaicInfoDto*/
+func (a *MosaicRoutesApiService) GetMosaicsFromNamespace(ctx context.Context, namespaceId string, localVarOptionals map[string]interface{}) ([]MosaicInfoDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []MosaicInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []MosaicInfoDto
 	)
 
 	// create path and map variables
@@ -188,7 +183,7 @@ func (a *MosaicRoutesApiService) GetMosaicsFromNamespace(ctx context.Context, na
 		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -199,7 +194,7 @@ func (a *MosaicRoutesApiService) GetMosaicsFromNamespace(ctx context.Context, na
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -225,22 +220,21 @@ func (a *MosaicRoutesApiService) GetMosaicsFromNamespace(ctx context.Context, na
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
 /* MosaicRoutesApiService Get readable names for a set of mosaics
- Returns names for mosaics.
- * @param ctx context.Context for authentication, logging, tracing, etc.
- @param mosaicIds Array of mosaicIds.
- @return []MosaicNameDto*/
-func (a *MosaicRoutesApiService) GetMosaicsName(ctx context.Context, mosaicIds MosaicIds) ([]MosaicNameDto,  *http.Response, error) {
+Returns names for mosaics.
+* @param ctx context.Context for authentication, logging, tracing, etc.
+@param mosaicIds Array of mosaicIds.
+@return []MosaicNameDto*/
+func (a *MosaicRoutesApiService) GetMosaicsName(ctx context.Context, mosaicIds MosaicIds) ([]MosaicNameDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []MosaicNameDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []MosaicNameDto
 	)
 
 	// create path and map variables
@@ -250,9 +244,8 @@ func (a *MosaicRoutesApiService) GetMosaicsName(ctx context.Context, mosaicIds M
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -263,7 +256,7 @@ func (a *MosaicRoutesApiService) GetMosaicsName(ctx context.Context, mosaicIds M
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -291,7 +284,5 @@ func (a *MosaicRoutesApiService) GetMosaicsName(ctx context.Context, mosaicIds M
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
-

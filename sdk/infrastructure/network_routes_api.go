@@ -1,12 +1,12 @@
 package infrastructure
 
 import (
-	"io/ioutil"
-	"net/url"
-	"net/http"
-	"strings"
-	"golang.org/x/net/context"
 	"encoding/json"
+	"golang.org/x/net/context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -16,18 +16,17 @@ var (
 
 type NetworkRoutesApiService service
 
-
 // NetworkRoutesApiService Get the current network type of the chain
 // Returns the current network type.
 // param ctx context.Context for authentication, logging, tracing, etc.
 // return NetworkTypeDto
-func (a *NetworkRoutesApiService) GetNetworkType(ctx context.Context) (NetworkTypeDto,  *http.Response, error) {
+func (a *NetworkRoutesApiService) GetNetworkType(ctx context.Context) (NetworkTypeDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  NetworkTypeDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     NetworkTypeDto
 	)
 
 	// create path and map variables
@@ -37,9 +36,8 @@ func (a *NetworkRoutesApiService) GetNetworkType(ctx context.Context) (NetworkTy
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -50,7 +48,7 @@ func (a *NetworkRoutesApiService) GetNetworkType(ctx context.Context) (NetworkTy
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -76,7 +74,5 @@ func (a *NetworkRoutesApiService) GetNetworkType(ctx context.Context) (NetworkTy
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
-

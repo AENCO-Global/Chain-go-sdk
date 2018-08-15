@@ -6,6 +6,6 @@ type Mosaic struct {
 	// The mosaic id
 	Id MosaicId
 	// The mosaic amount. The quantity is always given in smallest units for the mosaic
-    // i.e. if it has a divisibility of 3 the quantity is given in millis.
-    Amount uint64
+	// i.e. if it has a divisibility of 3 the quantity is given in millis.
+	Amount uint64
 }

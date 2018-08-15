@@ -1,8 +1,8 @@
 package mosaic
 
 import (
-	"github.com/slackve/nem2-sdk-go/sdk/model/namespace"
 	"github.com/slackve/nem2-sdk-go/sdk/model/account"
+	"github.com/slackve/nem2-sdk-go/sdk/model/namespace"
 )
 
 // The mosaic info structure describes a mosaic.

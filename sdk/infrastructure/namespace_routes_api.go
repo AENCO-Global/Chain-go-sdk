@@ -1,13 +1,13 @@
 package infrastructure
 
 import (
-	"io/ioutil"
-	"net/url"
-	"net/http"
-	"strings"
-	"golang.org/x/net/context"
 	"encoding/json"
 	"fmt"
+	"golang.org/x/net/context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -22,13 +22,13 @@ type NamespaceRoutesApiService service
 // param namespaceId Namespace identifier.
 // Returns NamespaceInfo for a given namespaceId.
 // return NamespaceInfoDto
-func (a *NamespaceRoutesApiService) GetNamespace(ctx context.Context, namespaceId string) (NamespaceInfoDto,  *http.Response, error) {
+func (a *NamespaceRoutesApiService) GetNamespace(ctx context.Context, namespaceId string) (NamespaceInfoDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  NamespaceInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     NamespaceInfoDto
 	)
 
 	// create path and map variables
@@ -39,9 +39,8 @@ func (a *NamespaceRoutesApiService) GetNamespace(ctx context.Context, namespaceI
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -52,7 +51,7 @@ func (a *NamespaceRoutesApiService) GetNamespace(ctx context.Context, namespaceI
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -78,7 +77,6 @@ func (a *NamespaceRoutesApiService) GetNamespace(ctx context.Context, namespaceI
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
@@ -90,13 +88,13 @@ func (a *NamespaceRoutesApiService) GetNamespace(ctx context.Context, namespaceI
 // param "pageSize" (int32) The number of namespaces to return.
 // param "id" (string) Identifier of the namespace after which we want the transactions to be returned.
 // return []NamespaceInfoDto
-func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(ctx context.Context, accountId string, localVarOptionals map[string]interface{}) ([]NamespaceInfoDto,  *http.Response, error) {
+func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(ctx context.Context, accountId string, localVarOptionals map[string]interface{}) ([]NamespaceInfoDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []NamespaceInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []NamespaceInfoDto
 	)
 
 	// create path and map variables
@@ -121,7 +119,7 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(ctx context.Context
 		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -132,7 +130,7 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(ctx context.Context
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -158,7 +156,6 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(ctx context.Context
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
@@ -170,13 +167,13 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccount(ctx context.Context
 // param "id" (string) Identifier of the namespace after which we want the transactions to be returned.
 // Returns an array of NamespaceInfo for a given set of addresses.
 // return []NamespaceInfoDto
-func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(ctx context.Context, addresses Addresses, localVarOptionals map[string]interface{}) ([]NamespaceInfoDto,  *http.Response, error) {
+func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(ctx context.Context, addresses Addresses, localVarOptionals map[string]interface{}) ([]NamespaceInfoDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []NamespaceInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []NamespaceInfoDto
 	)
 
 	// create path and map variables
@@ -200,7 +197,7 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(ctx context.Contex
 		localVarQueryParams.Add("id", parameterToString(localVarTempParam, ""))
 	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -211,7 +208,7 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(ctx context.Contex
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -239,7 +236,6 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(ctx context.Contex
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
@@ -248,13 +244,13 @@ func (a *NamespaceRoutesApiService) GetNamespacesFromAccounts(ctx context.Contex
 // param ctx context.Context for authentication, logging, tracing, etc.
 // param namespaceIds Array of namespaceIds.
 // return []NamespaceNameDto
-func (a *NamespaceRoutesApiService) GetNamespacesNames(ctx context.Context, namespaceIds NamespaceIds) ([]NamespaceNameDto,  *http.Response, error) {
+func (a *NamespaceRoutesApiService) GetNamespacesNames(ctx context.Context, namespaceIds NamespaceIds) ([]NamespaceNameDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []NamespaceNameDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []NamespaceNameDto
 	)
 
 	// create path and map variables
@@ -264,9 +260,8 @@ func (a *NamespaceRoutesApiService) GetNamespacesNames(ctx context.Context, name
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -277,7 +272,7 @@ func (a *NamespaceRoutesApiService) GetNamespacesNames(ctx context.Context, name
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -305,7 +300,5 @@ func (a *NamespaceRoutesApiService) GetNamespacesNames(ctx context.Context, name
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
-

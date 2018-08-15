@@ -9,6 +9,7 @@ import "time"
 type Deadline struct {
 	Value uint64
 }
+
 // Create deadline model
 // param deadline
 // param chronoUnit

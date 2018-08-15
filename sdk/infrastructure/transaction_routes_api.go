@@ -1,13 +1,13 @@
 package infrastructure
 
 import (
-	"io/ioutil"
-	"net/url"
-	"net/http"
-	"strings"
-	"golang.org/x/net/context"
 	"encoding/json"
 	"fmt"
+	"golang.org/x/net/context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -22,13 +22,13 @@ type TransactionRoutesApiService service
 // param ctx context.Context for authentication, logging, tracing, etc.
 // param payload Transaction payload.
 // return interface{}
-func (a *TransactionRoutesApiService) AnnounceCosignatureTransaction(ctx context.Context, payload TransactionPayload) (interface{},  *http.Response, error) {
+func (a *TransactionRoutesApiService) AnnounceCosignatureTransaction(ctx context.Context, payload TransactionPayload) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  interface{}
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     interface{}
 	)
 
 	// create path and map variables
@@ -38,9 +38,8 @@ func (a *TransactionRoutesApiService) AnnounceCosignatureTransaction(ctx context
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -51,7 +50,7 @@ func (a *TransactionRoutesApiService) AnnounceCosignatureTransaction(ctx context
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -78,7 +77,6 @@ func (a *TransactionRoutesApiService) AnnounceCosignatureTransaction(ctx context
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
 		return successPayload, localVarHttpResponse, err
 	}
-
 
 	return successPayload, localVarHttpResponse, err
 }
@@ -88,13 +86,13 @@ func (a *TransactionRoutesApiService) AnnounceCosignatureTransaction(ctx context
 // param ctx context.Context for authentication, logging, tracing, etc.
 // param payload Transaction payload.
 // return interface{}
-func (a *TransactionRoutesApiService) AnnouncePartialTransaction(ctx context.Context, payload TransactionPayload) (interface{},  *http.Response, error) {
+func (a *TransactionRoutesApiService) AnnouncePartialTransaction(ctx context.Context, payload TransactionPayload) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  interface{}
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     interface{}
 	)
 
 	// create path and map variables
@@ -104,9 +102,8 @@ func (a *TransactionRoutesApiService) AnnouncePartialTransaction(ctx context.Con
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -117,7 +114,7 @@ func (a *TransactionRoutesApiService) AnnouncePartialTransaction(ctx context.Con
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -144,7 +141,6 @@ func (a *TransactionRoutesApiService) AnnouncePartialTransaction(ctx context.Con
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
 		return successPayload, localVarHttpResponse, err
 	}
-
 
 	return successPayload, localVarHttpResponse, err
 }
@@ -154,13 +150,13 @@ func (a *TransactionRoutesApiService) AnnouncePartialTransaction(ctx context.Con
 // param ctx context.Context for authentication, logging, tracing, etc.
 // param payload Transaction payload.
 // return interface{}
-func (a *TransactionRoutesApiService) AnnounceTransaction(ctx context.Context, payload TransactionPayload) (interface{},  *http.Response, error) {
+func (a *TransactionRoutesApiService) AnnounceTransaction(ctx context.Context, payload TransactionPayload) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  interface{}
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     interface{}
 	)
 
 	// create path and map variables
@@ -170,9 +166,8 @@ func (a *TransactionRoutesApiService) AnnounceTransaction(ctx context.Context, p
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -183,7 +178,7 @@ func (a *TransactionRoutesApiService) AnnounceTransaction(ctx context.Context, p
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -211,7 +206,6 @@ func (a *TransactionRoutesApiService) AnnounceTransaction(ctx context.Context, p
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
@@ -220,13 +214,13 @@ func (a *TransactionRoutesApiService) AnnounceTransaction(ctx context.Context, p
 // param ctx context.Context for authentication, logging, tracing, etc.
 // param transactionId TransactionId or hash.
 // return interface{}
-func (a *TransactionRoutesApiService) GetTransaction(ctx context.Context, transactionId string) (interface{},  *http.Response, error) {
+func (a *TransactionRoutesApiService) GetTransaction(ctx context.Context, transactionId string) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  interface{}
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     interface{}
 	)
 
 	// create path and map variables
@@ -237,9 +231,8 @@ func (a *TransactionRoutesApiService) GetTransaction(ctx context.Context, transa
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -250,7 +243,7 @@ func (a *TransactionRoutesApiService) GetTransaction(ctx context.Context, transa
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -276,7 +269,6 @@ func (a *TransactionRoutesApiService) GetTransaction(ctx context.Context, transa
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
@@ -285,13 +277,13 @@ func (a *TransactionRoutesApiService) GetTransaction(ctx context.Context, transa
 // param ctx context.Context for authentication, logging, tracing, etc.
 // param hash Transaction hash.
 // return TransactionStatusDto
-func (a *TransactionRoutesApiService) GetTransactionStatus(ctx context.Context, hash string) (TransactionStatusDto,  *http.Response, error) {
+func (a *TransactionRoutesApiService) GetTransactionStatus(ctx context.Context, hash string) (TransactionStatusDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  TransactionStatusDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     TransactionStatusDto
 	)
 
 	// create path and map variables
@@ -302,9 +294,8 @@ func (a *TransactionRoutesApiService) GetTransactionStatus(ctx context.Context, 
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -315,7 +306,7 @@ func (a *TransactionRoutesApiService) GetTransactionStatus(ctx context.Context, 
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -341,7 +332,6 @@ func (a *TransactionRoutesApiService) GetTransactionStatus(ctx context.Context, 
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
@@ -350,13 +340,13 @@ func (a *TransactionRoutesApiService) GetTransactionStatus(ctx context.Context, 
 // param transactionIds Array of transactionIds or hashes.
 // Returns transaction information for a given set of transactionId or hash.
 // return []interface{}
-func (a *TransactionRoutesApiService) GetTransactions(ctx context.Context, transactionIds TransactionIds) ([]interface{},  *http.Response, error) {
+func (a *TransactionRoutesApiService) GetTransactions(ctx context.Context, transactionIds TransactionIds) ([]interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []interface{}
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []interface{}
 	)
 
 	// create path and map variables
@@ -366,9 +356,8 @@ func (a *TransactionRoutesApiService) GetTransactions(ctx context.Context, trans
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -379,7 +368,7 @@ func (a *TransactionRoutesApiService) GetTransactions(ctx context.Context, trans
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -407,7 +396,6 @@ func (a *TransactionRoutesApiService) GetTransactions(ctx context.Context, trans
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
 
@@ -416,13 +404,13 @@ func (a *TransactionRoutesApiService) GetTransactions(ctx context.Context, trans
 // param transactionHashes Array of transactionIds or hashes.
 // Returns an array of transaction statuses for a given set of transactionId or hash.
 // return []TransactionStatusDto*/
-func (a *TransactionRoutesApiService) GetTransactionsStatuses(ctx context.Context, transactionHashes TransactionHashes) ([]TransactionStatusDto,  *http.Response, error) {
+func (a *TransactionRoutesApiService) GetTransactionsStatuses(ctx context.Context, transactionHashes TransactionHashes) ([]TransactionStatusDto, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []TransactionStatusDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []TransactionStatusDto
 	)
 
 	// create path and map variables
@@ -432,9 +420,8 @@ func (a *TransactionRoutesApiService) GetTransactionsStatuses(ctx context.Contex
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -445,7 +432,7 @@ func (a *TransactionRoutesApiService) GetTransactionsStatuses(ctx context.Contex
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -473,7 +460,5 @@ func (a *TransactionRoutesApiService) GetTransactionsStatuses(ctx context.Contex
 		return successPayload, localVarHttpResponse, err
 	}
 
-
 	return successPayload, localVarHttpResponse, err
 }
-

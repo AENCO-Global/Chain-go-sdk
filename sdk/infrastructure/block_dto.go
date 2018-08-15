@@ -1,7 +1,6 @@
 package infrastructure
 
 type BlockDto struct {
-
 	Signature string `json:"signature,omitempty"`
 
 	Signer string `json:"signer,omitempty"`

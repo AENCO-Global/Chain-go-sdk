@@ -1,7 +1,6 @@
 package infrastructure
 
 type NamespaceDto struct {
-
 	Type_ int32 `json:"type"`
 
 	Depth int32 `json:"depth"`

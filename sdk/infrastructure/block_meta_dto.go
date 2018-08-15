@@ -1,7 +1,6 @@
 package infrastructure
 
 type BlockMetaDto struct {
-
 	Hash string `json:"hash,omitempty"`
 
 	GenerationHash string `json:"generationHash,omitempty"`

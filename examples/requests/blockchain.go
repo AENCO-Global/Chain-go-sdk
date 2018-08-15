@@ -1,18 +1,18 @@
 package main
 
 import (
+	"fmt"
 	"github.com/slackve/nem2-sdk-go/sdk/infrastructure"
 	"github.com/slackve/nem2-sdk-go/sdk/utils"
-	"fmt"
 )
 
 func main() {
 
 	// Blockchain routes.
 	server := "http://catapult.isarq.com:3000"
-	conf := infrastructure.NewConfiguration(server)
-
+	conf := infrastructure.NewConfiguration()
 	client := infrastructure.NewAPIClient(conf)
+	client.ChangeBasePath(server)
 
 	// 01 - Get BlockInfo for a given block height.
 	// Param 1 - Block height

@@ -7,4 +7,3 @@ type Address struct {
 	// The NEM network type.
 	NetworkType int
 }
-

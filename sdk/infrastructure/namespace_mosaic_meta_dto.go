@@ -1,7 +1,6 @@
 package infrastructure
 
 type NamespaceMosaicMetaDto struct {
-
 	Active bool `json:"active"`
 
 	Index int32 `json:"index"`

@@ -1,13 +1,13 @@
 package infrastructure
 
 import (
-	"io/ioutil"
-	"net/url"
-	"strings"
-	"golang.org/x/net/context"
 	"encoding/json"
 	"fmt"
 	"github.com/slackve/nem2-sdk-go/sdk/utils"
+	"golang.org/x/net/context"
+	"io/ioutil"
+	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -24,12 +24,12 @@ type BlockchainRoutesApiService service
 func (a *BlockchainRoutesApiService) GetBlockByHeight(height int64) (BlockInfoDto, error) {
 
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  BlockInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     BlockInfoDto
 	)
 
 	// create path and map variables
@@ -40,9 +40,8 @@ func (a *BlockchainRoutesApiService) GetBlockByHeight(height int64) (BlockInfoDt
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -53,7 +52,7 @@ func (a *BlockchainRoutesApiService) GetBlockByHeight(height int64) (BlockInfoDt
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -89,14 +88,14 @@ func (a *BlockchainRoutesApiService) GetBlockByHeight(height int64) (BlockInfoDt
 // Returns array of transactions included in a block for a block height.
 // return []TransactionInfoDto
 func (a *BlockchainRoutesApiService) GetBlockTransactions(height int64, pageSize int, id string) ([]TransactionInfoDto,
-error) {
+	error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []TransactionInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -116,7 +115,7 @@ error) {
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -127,7 +126,7 @@ error) {
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -162,12 +161,12 @@ error) {
 // return HeightDto
 func (a *BlockchainRoutesApiService) GetBlockchainHeight() (HeightDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  HeightDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     HeightDto
 	)
 
 	// create path and map variables
@@ -177,9 +176,8 @@ func (a *BlockchainRoutesApiService) GetBlockchainHeight() (HeightDto, error) {
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -190,7 +188,7 @@ func (a *BlockchainRoutesApiService) GetBlockchainHeight() (HeightDto, error) {
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -216,7 +214,6 @@ func (a *BlockchainRoutesApiService) GetBlockchainHeight() (HeightDto, error) {
 		return successPayload, err
 	}
 
-
 	return successPayload, err
 }
 
@@ -225,12 +222,12 @@ func (a *BlockchainRoutesApiService) GetBlockchainHeight() (HeightDto, error) {
 // return BlockchainScoreDto
 func (a *BlockchainRoutesApiService) GetBlockchainScore() (BlockchainScoreDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  BlockchainScoreDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     BlockchainScoreDto
 	)
 
 	// create path and map variables
@@ -240,9 +237,8 @@ func (a *BlockchainRoutesApiService) GetBlockchainScore() (BlockchainScoreDto, e
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -253,7 +249,7 @@ func (a *BlockchainRoutesApiService) GetBlockchainScore() (BlockchainScoreDto, e
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -289,12 +285,12 @@ func (a *BlockchainRoutesApiService) GetBlockchainScore() (BlockchainScoreDto, e
 // return []BlockInfoDto
 func (a *BlockchainRoutesApiService) GetBlocksByHeightWithLimit(height int64, limit int32) ([]BlockInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []BlockInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []BlockInfoDto
 	)
 
 	// create path and map variables
@@ -314,7 +310,7 @@ func (a *BlockchainRoutesApiService) GetBlocksByHeightWithLimit(height int64, li
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -325,7 +321,7 @@ func (a *BlockchainRoutesApiService) GetBlocksByHeightWithLimit(height int64, li
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -359,12 +355,12 @@ func (a *BlockchainRoutesApiService) GetBlocksByHeightWithLimit(height int64, li
 // Returns statistical information about the blockchain.
 func (a *BlockchainRoutesApiService) GetDiagnosticStorage() (BlockchainStorageInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  BlockchainStorageInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     BlockchainStorageInfoDto
 	)
 
 	// create path and map variables
@@ -374,9 +370,8 @@ func (a *BlockchainRoutesApiService) GetDiagnosticStorage() (BlockchainStorageIn
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -387,7 +382,7 @@ func (a *BlockchainRoutesApiService) GetDiagnosticStorage() (BlockchainStorageIn
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -415,4 +410,3 @@ func (a *BlockchainRoutesApiService) GetDiagnosticStorage() (BlockchainStorageIn
 
 	return successPayload, err
 }
-

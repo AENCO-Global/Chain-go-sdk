@@ -1,13 +1,13 @@
 package infrastructure
 
 import (
-	"io/ioutil"
-	"net/url"
-	"strings"
-	"golang.org/x/net/context"
 	"encoding/json"
 	"fmt"
 	"github.com/slackve/nem2-sdk-go/sdk/utils"
+	"golang.org/x/net/context"
+	"io/ioutil"
+	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -17,19 +17,18 @@ var (
 
 type AccountRoutesApiService service
 
-
 // AccountRoutesApiService Get account information
 // Returns AccountInfo for an account.
 // param accountId Account address or publicKey.
 // return AccountInfoDto
 func (a *AccountRoutesApiService) GetAccountInfo(accountId string) (AccountInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  AccountInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     AccountInfoDto
 	)
 
 	// create path and map variables
@@ -40,9 +39,8 @@ func (a *AccountRoutesApiService) GetAccountInfo(accountId string) (AccountInfoD
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -53,7 +51,7 @@ func (a *AccountRoutesApiService) GetAccountInfo(accountId string) (AccountInfoD
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -89,12 +87,12 @@ func (a *AccountRoutesApiService) GetAccountInfo(accountId string) (AccountInfoD
 // return MultisigAccountInfoDto
 func (a *AccountRoutesApiService) GetAccountMultisig(accountId string) (MultisigAccountInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  MultisigAccountInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     MultisigAccountInfoDto
 	)
 
 	// create path and map variables
@@ -105,9 +103,8 @@ func (a *AccountRoutesApiService) GetAccountMultisig(accountId string) (Multisig
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -118,7 +115,7 @@ func (a *AccountRoutesApiService) GetAccountMultisig(accountId string) (Multisig
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -153,12 +150,12 @@ func (a *AccountRoutesApiService) GetAccountMultisig(accountId string) (Multisig
 // return []MultisigAccountGraphInfoDto
 func (a *AccountRoutesApiService) GetAccountMultisigGraph(accountId string) ([]MultisigAccountGraphInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []MultisigAccountGraphInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []MultisigAccountGraphInfoDto
 	)
 
 	// create path and map variables
@@ -169,9 +166,8 @@ func (a *AccountRoutesApiService) GetAccountMultisigGraph(accountId string) ([]M
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -182,7 +178,7 @@ func (a *AccountRoutesApiService) GetAccountMultisigGraph(accountId string) ([]M
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -208,7 +204,6 @@ func (a *AccountRoutesApiService) GetAccountMultisigGraph(accountId string) ([]M
 		return successPayload, err
 	}
 
-
 	return successPayload, err
 }
 
@@ -218,12 +213,12 @@ func (a *AccountRoutesApiService) GetAccountMultisigGraph(accountId string) ([]M
 // return []AccountInfoDto
 func (a *AccountRoutesApiService) GetAccountsInfo(addresses Addresses) ([]AccountInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []AccountInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []AccountInfoDto
 	)
 
 	// create path and map variables
@@ -233,9 +228,8 @@ func (a *AccountRoutesApiService) GetAccountsInfo(addresses Addresses) ([]Accoun
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -246,7 +240,7 @@ func (a *AccountRoutesApiService) GetAccountsInfo(addresses Addresses) ([]Accoun
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -286,12 +280,12 @@ func (a *AccountRoutesApiService) GetAccountsInfo(addresses Addresses) ([]Accoun
 // return []TransactionInfoDto
 func (a *AccountRoutesApiService) IncomingTransactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto, error) {
 	var (
-		ctx context.Context
-	localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []TransactionInfoDto
+		ctx                context.Context
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -311,7 +305,7 @@ func (a *AccountRoutesApiService) IncomingTransactions(publicKey string, pageSiz
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -322,7 +316,7 @@ func (a *AccountRoutesApiService) IncomingTransactions(publicKey string, pageSiz
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -360,12 +354,12 @@ func (a *AccountRoutesApiService) IncomingTransactions(publicKey string, pageSiz
 // return []TransactionInfoDto
 func (a *AccountRoutesApiService) OutgoingTransactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []TransactionInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -385,7 +379,7 @@ func (a *AccountRoutesApiService) OutgoingTransactions(publicKey string, pageSiz
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -396,7 +390,7 @@ func (a *AccountRoutesApiService) OutgoingTransactions(publicKey string, pageSiz
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -434,14 +428,14 @@ func (a *AccountRoutesApiService) OutgoingTransactions(publicKey string, pageSiz
 // aram "id" (string) Identifier of the transaction after which we want the transactions to be returned.
 // return []TransactionInfoDto
 func (a *AccountRoutesApiService) PartialTransactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto,
-error) {
+	error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []TransactionInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -461,7 +455,7 @@ error) {
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -472,7 +466,7 @@ error) {
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -498,7 +492,6 @@ error) {
 		return successPayload, err
 	}
 
-
 	return successPayload, err
 }
 
@@ -510,12 +503,12 @@ error) {
 // return []TransactionInfoDto
 func (a *AccountRoutesApiService) Transactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []TransactionInfoDto
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -535,7 +528,7 @@ func (a *AccountRoutesApiService) Transactions(publicKey string, pageSize int, i
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -546,7 +539,7 @@ func (a *AccountRoutesApiService) Transactions(publicKey string, pageSize int, i
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -584,12 +577,12 @@ func (a *AccountRoutesApiService) Transactions(publicKey string, pageSize int, i
 // return []TransactionInfoDto
 func (a *AccountRoutesApiService) UnconfirmedTransactions(publicKey string, pageSize int, id string) ([]TransactionInfoDto, error) {
 	var (
-		ctx context.Context
-	localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  []TransactionInfoDto
+		ctx                context.Context
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		successPayload     []TransactionInfoDto
 	)
 
 	// create path and map variables
@@ -609,7 +602,7 @@ func (a *AccountRoutesApiService) UnconfirmedTransactions(publicKey string, page
 	}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{  }
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -620,7 +613,7 @@ func (a *AccountRoutesApiService) UnconfirmedTransactions(publicKey string, page
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
-		}
+	}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -648,4 +641,3 @@ func (a *AccountRoutesApiService) UnconfirmedTransactions(publicKey string, page
 
 	return successPayload, err
 }
-

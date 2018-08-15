@@ -1,7 +1,6 @@
 package infrastructure
 
 type AccountDto struct {
-
 	Address string `json:"address"`
 
 	AddressHeight *[]UInt64Dto `json:"addressHeight"`

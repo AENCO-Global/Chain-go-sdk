@@ -1,7 +1,6 @@
 package infrastructure
 
 type Multisig struct {
-
 	Account string `json:"account"`
 
 	AccountAddress string `json:"accountAddress,omitempty"`

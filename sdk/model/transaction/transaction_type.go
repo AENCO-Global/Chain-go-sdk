@@ -1,7 +1,7 @@
 package transaction
 
 // Struct containing transaction type map.
-var TransactionType  = map[string]int{
+var TransactionType = map[string]int{
 	// Transfer Transaction transaction type.
 	"TRANSFER": 0x4154,
 	// Register namespace transaction type.
@@ -23,4 +23,3 @@ var TransactionType  = map[string]int{
 	// Secret Proof transaction type.
 	"SECRET_PROOF": 0x434C,
 }
-

@@ -3,9 +3,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/slackve/nem2-sdk-go/sdk/infrastructure"
 	"github.com/slackve/nem2-sdk-go/sdk/utils"
-	"fmt"
 )
 
 const (
@@ -18,9 +18,9 @@ func main() {
 
 	// Account routes.
 	server := "http://catapult.isarq.com:3000"
-	conf := infrastructure.NewConfiguration(server)
-
+	conf := infrastructure.NewConfiguration()
 	client := infrastructure.NewAPIClient(conf)
+	client.ChangeBasePath(server)
 
 	// 01 - Get AccountInfo for an account.
 	// Param Address - Account address or publicKey.

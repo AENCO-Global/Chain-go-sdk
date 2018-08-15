@@ -1,7 +1,6 @@
 package infrastructure
 
 type TransactionStatusDto struct {
-
 	Group string `json:"group,omitempty"`
 
 	Status string `json:"status"`
