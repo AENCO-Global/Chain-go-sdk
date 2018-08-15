@@ -1,7 +1,7 @@
 package infrastructure
 
 type TransactionDto struct {
-	Deadline  *[]UInt64Dto   `json:"deadline,omitempty"`
+	Deadline  *[]UInt64Dto `json:"deadline,omitempty"`
 	Fee       *[]UInt64Dto `json:"fee,omitempty"`
 	Mosaics   []MosaicDto  `json:"mosaics,omitempty"`
 	Recipient string       `json:"recipient,omitempty"`

@@ -9,6 +9,7 @@ import (
 )
 
 const (
+	Server    = "http://catapult.isarq.com:3000"
 	Address   = "SCFWMP2M2HP43KJYGOBDVQ3SKX3Q6HFH6HZZ6DNR"
 	Address2  = "SAUUKSFBYHI57KTEXQNJWHOKXITF7T4BXON3GVTJ"
 	PublicKey = "E17324EAF403B5FD747055ED3ED97CFD1000AF176FB9294C9424A2814D765A76"
@@ -17,10 +18,8 @@ const (
 func main() {
 
 	// Account routes.
-	server := "http://catapult.isarq.com:3000"
-	conf := infrastructure.NewConfiguration()
-	client := infrastructure.NewAPIClient(conf)
-	client.ChangeBasePath(server)
+	client := infrastructure.NewAPIClient()
+	client.ChangeServer(Server)
 
 	// 01 - Get AccountInfo for an account.
 	// Param Address - Account address or publicKey.

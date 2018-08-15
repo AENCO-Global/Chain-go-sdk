@@ -48,7 +48,13 @@ type service struct {
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *Configuration) *APIClient {
+func NewAPIClient() *APIClient {
+	cfg := &Configuration{
+		BasePath:      "http://localhost:3000",
+		DefaultHeader: make(map[string]string),
+		UserAgent:     "nem2-sdk-go",
+	}
+
 	if cfg.HTTPClient == nil {
 		cfg.HTTPClient = http.DefaultClient
 	}
@@ -148,7 +154,7 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 }
 
 // Change base path to allow switching to mocks
-func (c *APIClient) ChangeBasePath(path string) {
+func (c *APIClient) ChangeServer(path string) {
 	c.cfg.BasePath = path
 }
 

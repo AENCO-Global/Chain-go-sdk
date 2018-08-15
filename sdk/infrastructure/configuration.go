@@ -49,16 +49,6 @@ type Configuration struct {
 	HTTPClient    *http.Client
 }
 
-func NewConfiguration() *Configuration {
-
-	cfg := &Configuration{
-		BasePath:      "http://localhost:3000",
-		DefaultHeader: make(map[string]string),
-		UserAgent:     "nem2-sdk-go",
-	}
-	return cfg
-}
-
 func (c *Configuration) AddDefaultHeader(key string, value string) {
 	c.DefaultHeader[key] = value
 }
