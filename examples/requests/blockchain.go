@@ -44,7 +44,7 @@ func main() {
 	}
 	fmt.Printf("GetBlockchainHeight:\n%s", utils.Struc2Json(c))
 
-	// 04 - Get the current height of the chain.
+	// 04 - Get the current score of the chain.
 	d, err := client.BlockchainRoutesApi.GetBlockchainScore()
 	if err != nil {
 		fmt.Println(utils.Struc2Json(err))
