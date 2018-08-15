@@ -15,7 +15,7 @@ const (
 
 func main() {
 
-	// Blockchain routes.
+	// Namespace routes.
 	const Server = "http://catapult.isarq.com:3000"
 
 	client := infrastructure.NewAPIClient()

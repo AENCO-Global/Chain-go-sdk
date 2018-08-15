@@ -13,8 +13,8 @@ const (
 
 func main() {
 
-	// Account routes.
-	const Server= "http://catapult.isarq.com:3000"
+	// Transactions routes.
+	const Server = "http://catapult.isarq.com:3000"
 
 	client := infrastructure.NewAPIClient()
 	client.ChangeServer(Server)

@@ -4,9 +4,10 @@
 Nem2-sdk for for Golang and Scala to work with the NEM2 (a.k.a Catapult) based on https://github.com/nemtech/nem2-sdk-typescript-javascript
 
 
-
 **This project is in full development and many things can change!**
+
 # types of requests
+
 ### Account gets
  - Get AccountInfo for an account.
  - Get AccountsInfo for different accounts.
@@ -17,12 +18,12 @@ Nem2-sdk for for Golang and Scala to work with the NEM2 (a.k.a Catapult) based o
  - Get aggregate bonded transactions information.
  - Get multisig account information.
  - Get multisig account graph information.
+ 
  ### Transaction gets
  - Get transaction information of transactionId or hash.
  - Get transaction information for a given set of transactionId or hash.
  - Get transaction status of transactionId or hash..
  - Get an array of transaction statuses for a given set of transactionId or hash.
- 
  
  ### Mosaic gets
  - Get mosaic information.
@@ -42,6 +43,9 @@ Nem2-sdk for for Golang and Scala to work with the NEM2 (a.k.a Catapult) based o
  - Get the current height of the chain.
  - Get the current score of the chain.
  - Get an array of BlockInfo for a given block height and limit.
+ 
+ ### Network gets
+ - Get the current network type of the chain.
  
  # features in development!
    - Announces a transaction to the network.

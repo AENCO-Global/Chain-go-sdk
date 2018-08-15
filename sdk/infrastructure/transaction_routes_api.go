@@ -19,11 +19,11 @@ type TransactionRoutesApiService service
 
 // TransactionRoutesApiService Announce a cosignature transaction
 // Announces a cosignature transaction to the network.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param payload Transaction payload.
 // return interface{}
-func (a *TransactionRoutesApiService) AnnounceCosignatureTransaction(ctx context.Context, payload TransactionPayload) (interface{}, *http.Response, error) {
+func (a *TransactionRoutesApiService) AnnounceCosignatureTransaction(payload TransactionPayload) (interface{}, *http.Response, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -83,11 +83,11 @@ func (a *TransactionRoutesApiService) AnnounceCosignatureTransaction(ctx context
 
 // TransactionRoutesApiService Announce an aggregate bonded transaction
 // Announces an aggregate bonded transaction to the network.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param payload Transaction payload.
 // return interface{}
-func (a *TransactionRoutesApiService) AnnouncePartialTransaction(ctx context.Context, payload TransactionPayload) (interface{}, *http.Response, error) {
+func (a *TransactionRoutesApiService) AnnouncePartialTransaction(payload TransactionPayload) (interface{}, *http.Response, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -147,11 +147,11 @@ func (a *TransactionRoutesApiService) AnnouncePartialTransaction(ctx context.Con
 
 // TransactionRoutesApiService Announce a  new transaction
 // Announces a transaction to the network.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param payload Transaction payload.
 // return interface{}
-func (a *TransactionRoutesApiService) AnnounceTransaction(ctx context.Context, payload TransactionPayload) (interface{}, *http.Response, error) {
+func (a *TransactionRoutesApiService) AnnounceTransaction(payload TransactionPayload) (interface{}, *http.Response, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -211,12 +211,11 @@ func (a *TransactionRoutesApiService) AnnounceTransaction(ctx context.Context, p
 
 // TransactionRoutesApiService Get transaction information
 // Returns transaction given its transactionId or hash.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param transactionId TransactionId or hash.
-// return interface{}
+// return TransactionInfoDto
 func (a *TransactionRoutesApiService) GetTransaction(transactionId string) (TransactionInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -275,12 +274,11 @@ func (a *TransactionRoutesApiService) GetTransaction(transactionId string) (Tran
 
 // TransactionRoutesApiService Get transaction status
 // Returns transaction status for a given transactionId or hash.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param hash Transaction hash.
 // return TransactionStatusDto
 func (a *TransactionRoutesApiService) GetTransactionStatus(hash string) (TransactionStatusDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -338,13 +336,12 @@ func (a *TransactionRoutesApiService) GetTransactionStatus(hash string) (Transac
 }
 
 // TransactionRoutesApiService Get transactions information
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param transactionIds Array of transactionIds or hashes.
 // Returns transaction information for a given set of transactionId or hash.
-// return []interface{}
+// return []TransactionInfoDto
 func (a *TransactionRoutesApiService) GetTransactions(transactionIds TransactionIds) ([]TransactionInfoDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -403,13 +400,12 @@ func (a *TransactionRoutesApiService) GetTransactions(transactionIds Transaction
 }
 
 // TransactionRoutesApiService Get transactions status.
-// param ctx context.Context for authentication, logging, tracing, etc.
 // param transactionHashes Array of transactionIds or hashes.
 // Returns an array of transaction statuses for a given set of transactionId or hash.
-// return []TransactionStatusDto*/
+// return []TransactionStatusDto
 func (a *TransactionRoutesApiService) GetTransactionsStatuses(transactionHashes TransactionHashes) ([]TransactionStatusDto, error) {
 	var (
-		ctx context.Context
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string

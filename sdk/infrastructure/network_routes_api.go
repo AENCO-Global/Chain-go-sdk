@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"golang.org/x/net/context"
 	"io/ioutil"
-	"net/http"
 	"net/url"
 	"strings"
 )
@@ -20,8 +19,9 @@ type NetworkRoutesApiService service
 // Returns the current network type.
 // param ctx context.Context for authentication, logging, tracing, etc.
 // return NetworkTypeDto
-func (a *NetworkRoutesApiService) GetNetworkType(ctx context.Context) (NetworkTypeDto, *http.Response, error) {
+func (a *NetworkRoutesApiService) GetNetworkType() (NetworkTypeDto, error) {
 	var (
+		ctx                context.Context
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
@@ -57,22 +57,22 @@ func (a *NetworkRoutesApiService) GetNetworkType(ctx context.Context) (NetworkTy
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, err
 	}
 
 	localVarHttpResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 	defer localVarHttpResponse.Body.Close()
 	if localVarHttpResponse.StatusCode >= 300 {
 		bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
-		return successPayload, localVarHttpResponse, reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+		return successPayload, reportError("{\"Status\": %v, \"Body\": %s}", localVarHttpResponse.StatusCode, bodyBytes)
 	}
 
 	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-		return successPayload, localVarHttpResponse, err
+		return successPayload, err
 	}
 
-	return successPayload, localVarHttpResponse, err
+	return successPayload, err
 }

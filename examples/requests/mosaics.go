@@ -11,7 +11,7 @@ const mosaic2 = "d525ad41d95fcf28"
 
 func main() {
 
-	// Blockchain routes.
+	// Mosaic routes.
 	const Server = "http://catapult.isarq.com:3000"
 
 	client := infrastructure.NewAPIClient()
