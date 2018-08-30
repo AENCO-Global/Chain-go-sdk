@@ -6,6 +6,13 @@ Nem2-sdk for for Golang and Scala to work with the NEM2 (a.k.a Catapult) based o
 
 **This project is in full development and many things can change!**
 
+# Basic functions.
+ - Generates new Keypair.
+ - Generates a Keypair from a private key.
+ - Generate Account struct.
+ - Generate address from a public key.
+ - Generate address from a private key.
+
 # types of requests
 
 ### Account gets
