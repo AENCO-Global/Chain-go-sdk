@@ -5,7 +5,7 @@ import (
 	"github.com/google/flatbuffers/go"
 
 	"github.com/slackve/nem2-sdk-go/core/coders"
-	"github.com/slackve/nem2-sdk-go/sdk/core/Catapult/Buffers"
+	"github.com/slackve/nem2-sdk-go/core/Catapult/Buffers"
 	"github.com/slackve/nem2-sdk-go/sdk/infrastructure"
 	"github.com/slackve/nem2-sdk-go/sdk/model/transaction"
 	"github.com/slackve/nem2-sdk-go/sdk/utils"
