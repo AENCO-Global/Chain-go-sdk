@@ -9,15 +9,15 @@ import (
 )
 
 const (
-	Address   = "SCFWMP2M2HP43KJYGOBDVQ3SKX3Q6HFH6HZZ6DNR"
-	Address2  = "SAUUKSFBYHI57KTEXQNJWHOKXITF7T4BXON3GVTJ"
-	PublicKey = "E17324EAF403B5FD747055ED3ED97CFD1000AF176FB9294C9424A2814D765A76"
+	Address   = "SCQXJT7U2PYWP5NZUC5LSMBXCIR4WTZE5OIFJD4B"
+	Address2  = "SDZAIHDGCHWWZPLHDLNTZFSKPXXGQJVBV52STHZ2"
+	PublicKey = "814DA2775296E71D461CACA6CB8BF3D0485C522AAAD99C1681A9AE12C402188E"
 )
 
 func main() {
 
 	// Account routes.
-	const Server = "http://catapult.isarq.com:3000"
+	const Server = "http://api.beta.catapult.mijin.io:3000"
 
 	client := infrastructure.NewAPIClient()
 	client.ChangeServer(Server)

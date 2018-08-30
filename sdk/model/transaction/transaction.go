@@ -1,22 +1,45 @@
 package transaction
 
+import (
+	"github.com/slackve/nem2-sdk-go/core/coders"
+)
+
 // An transaction struct that serves as the base class of all NEM transactions.
-type Transaction struct {
+type TransactionStc struct {
 	// The transaction type.
-	Type int
+	Type int `json:"type,omitempty"`
 	// The network type.
-	NetworkType int
+	NetworkType int `json:"networkType,omitempty"`
 	// The transaction version number.
-	Version int
+	Version int `json:"version,omitempty"`
 	// The deadline to include the transaction.
-	Deadline Deadline
+	Deadline *Deadline `json:"deadline,omitempty"`
 	// The fee for the transaction. The higher the fee, the higher the priority of the transaction.
 	// Transactions with high priority get included in a block before transactions with lower priority.
-	Fee uint64
+	Fee coders.UInt64 `json:"fee,omitempty"`
 	// The transaction signature (missing if part of an aggregate transaction).
-	Signature string
+	Signature string `json:"signature,omitempty"`
 	// The account of the transaction creator.
-	Signer PublicAccount
+	Signer *PublicAccount `json:"signer,omitempty"`
 	// Transactions meta data object contains additional information about the transaction.
-	TransactionInfo TransactionInfo
+	TransactionInfo *TransactionInfo `json:"transactionInfo,omitempty"`
+}
+
+var Transaction = struct{
+	Create func(int, int, int, Deadline) TransactionStc
+}{
+	Create: CreateTransaction,
+}
+
+func CreateTransaction(Type, networkType, version int, deadline Deadline) TransactionStc {
+	return TransactionStc{
+		Type:            Type,
+		NetworkType:     networkType,
+		Version:         version,
+		Deadline:        &deadline,
+		Fee:             coders.UInt64{},
+		Signature:       "",
+		Signer:          nil,
+		TransactionInfo: nil,
+	}
 }

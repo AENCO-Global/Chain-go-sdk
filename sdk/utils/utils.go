@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"reflect"
 	"strconv"
+	"log"
+	"regexp"
 )
 
 type Error struct {
@@ -102,4 +104,30 @@ func Struc2Json(data interface{}) string {
 		fmt.Println("Error:", err)
 	}
 	return string(r) + "\n_________________\n"
+}
+
+// Check if a public key is valid
+// param publicKey - A public key
+// return - True if valid, false otherwise
+func IsPublicKeyValid(publicKey string) bool {
+	if len(publicKey) != 64 {
+		log.Println("Private key length must be 64 or 66 characters !")
+		return false
+	} else if !IsHexadecimal(publicKey) {
+		log.Println("Private key must be hexadecimal only !")
+		return false
+	} else {
+		return true
+	}
+}
+
+// Test if a string is hexadecimal
+// param str - A string to test
+// return True if correct, false otherwise
+func IsHexadecimal(str string) bool {
+	exp := regexp.MustCompile("^[0-9a-fA-F]+$")
+	if exp.MatchString(str) == true {
+		return true
+	}
+	return false
 }
