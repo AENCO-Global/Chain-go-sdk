@@ -1,5 +1,5 @@
 # AEN Co chain-go-rest-sdk 
-![N|Solid](https://aencoin.com/api/media/aenco_logo_hz_preview.png)
+![N|Solid](https://aencoin.com/api/media/aenco_logo_hz_preview.jpg)
 
 AEN for Golang and Scala to work with AEN Chain based on https://github.com/nemtech/nem2-sdk-typescript-javascript
 
