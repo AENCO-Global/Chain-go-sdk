@@ -1,10 +1,9 @@
-# Nem2-sdk-go 
-![N|Solid](https://github.com/slackve/nem2-sdk-go/blob/master/assets/tipo.jpg)
+# AEN Co chain-go-rest-sdk 
+![N|Solid](https://aencoin.com/api/media/aenco_logo_hz_preview.png)
 
-Nem2-sdk for for Golang and Scala to work with the NEM2 (a.k.a Catapult) based on https://github.com/nemtech/nem2-sdk-typescript-javascript
+AEN for Golang and Scala to work with AEN Chain based on https://github.com/nemtech/nem2-sdk-typescript-javascript
 
-
-**This project is in full development and many things can change!**
+**This project is in full development and things may change!**
 
 # Basic functions.
  - Generates new Keypair.
