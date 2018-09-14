@@ -62,12 +62,8 @@ Nem2-sdk for for Golang and Scala to work with the NEM2 (a.k.a Catapult) based o
 ### Installation
 
 ```sh
-$ go get -u github.com/slackve/nem2-sdk-go
+$ go get -u github.com/AENCO-Global/Chain-go-rest
 ```
-
-### Development
-
-Want to contribute? Great!
 
 License
 ----
