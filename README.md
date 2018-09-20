@@ -61,7 +61,7 @@ AEN for Golang and Scala to work with AEN Chain based on https://github.com/nemt
 ### Installation
 
 ```sh
-$ go get -u github.com/AENCO-Global/Chain-go-rest
+$ go get -u github.com/AENCO-Global/Chain-go-sdk
 ```
 
 License
